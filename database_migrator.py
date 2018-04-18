@@ -1,7 +1,10 @@
 import boto3
 import datetime
+import pickle
 
 items_dict = {}
+# items_dict = pickle.loads(open('database_backup', 'rb').read())
+# print(items_dict)
 
 dynamo = boto3.resource('dynamodb')
 source_table =  dynamo.Table('points')
@@ -20,5 +23,5 @@ for points_owner in items_dict.keys():
         points = int(items_dict[points_owner][key]['points'])
         cummulative_points += points
         print('%s %s %s %s' % (items_dict[points_owner][key]['name_date'], points, cummulative_points, items_dict[points_owner][key]['description']))
-    print(points_owner)
-    print(cummulative_points)
+with open('database_backup', 'wb') as database_file:
+    database_file.write(pickle.dumps(items_dict))
