@@ -1,12 +1,12 @@
 <template>
-  <div class="tasks">
-    <h1>Task Manager</h1>
-    <input v-model="taskname" placeholder="Task Name" class="input">
-    <button @click="createTask()" class="taskButton">Create Task</button>
+  <div class="points">
+    <h1>Points</h1>
+    <input v-model="taskname" placeholder="Text" class="input">
+    <button @click="createTask()" class="taskButton">Create Record</button>
     <ul>
       <li
         class="task"
-        v-for="(task, index) in tasks" :key="index"
+        v-for="(task, index) in points" :key="index"
       >
         <p class="text">{{ task.name }}</p>
         <p @click="toggleComplete(task)" class="text button">{{ task.completed ? 'completed' : 'not completed' }}</p>
@@ -24,7 +24,7 @@
   import uuidV4 from 'uuid/v4'
 
   export default {
-    name: 'Tasks',
+    name: 'Points',
     methods: {
       toggleComplete(task) {
         const updatedTask = {
@@ -123,12 +123,12 @@
     data () {
       return {
         taskname: '',
-        tasks: []
+        points: []
       }
     },
 
     apollo: {
-      tasks: {
+      points: {
         query: () => GetPoints,
         update: data => {
           console.log('data: ', data);

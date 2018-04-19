@@ -3,10 +3,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-
 import AWSAppSyncClient from "aws-appsync"
 import VueApollo from 'vue-apollo'
 import appSyncConfig from './AppSync'
+
+Vue.config.productionTip = false;
 
 const client = new AWSAppSyncClient({
   url: appSyncConfig.graphqlEndpoint,
@@ -22,15 +23,14 @@ const client = new AWSAppSyncClient({
     }
   }
 });
+console.log(client);
 
 const appsyncProvider = new VueApollo({
   defaultClient: client
 });
-
 Vue.use(VueApollo);
-Vue.config.productionTip = false;
-
 /* eslint-disable no-new */
+
 new Vue({
   el: '#app',
   router,

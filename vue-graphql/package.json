@@ -1,8 +1,8 @@
 {
   "name": "vue-graphql",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "kreodont <dimasanov@gmail.com>",
+  "description": "AppSync project",
+  "author": "Kreodont",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -10,12 +10,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "aws-appsync": "^1.0.12",
+    "aws-appsync": "^1.0.15",
     "graphql-tag": "^2.8.0",
     "vue": "^2.5.2",
     "vue-apollo": "^3.0.0-beta.5",
-    "vue-router": "^3.0.1",
-    "uuid/v4": "latest"
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -52,8 +51,7 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0",
-    "uuid/v4": "latest"
+    "webpack-merge": "^4.1.0"
   },
   "engines": {
     "node": ">= 6.0.0",
