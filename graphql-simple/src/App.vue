@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <my strings=[1, 2, 4]/>
+    <my_component/>
     <!--<Table/>-->
   </div>
 </template>
 
 <script>
-import my from './components/My.vue'
+import my_component from './components/My.vue'
 import grid from './components/Table.vue'
 
 export default {
   name: 'App',
   components: {
-    my
+    my_component
   }
 }
 </script>
