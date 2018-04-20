@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <Table/>
+    <my strings=[1, 2, 4]/>
+    <!--<Table/>-->
   </div>
 </template>
 
 <script>
-import Table from './components/Table.vue'
+import my from './components/My.vue'
+import grid from './components/Table.vue'
 
 export default {
   name: 'App',
   components: {
-    Table
+    my
   }
 }
 </script>
