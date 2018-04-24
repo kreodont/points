@@ -1,18 +1,17 @@
 <template>
   <div id="app">
-    <my_component/>
-    <!--<Table/>-->
+    <img src="./assets/logo.png">
+    <HelloWorld/>
   </div>
 </template>
 
 <script>
-import my_component from './components/My.vue'
-import grid from './components/Table.vue'
+import HelloWorld from './components/HelloWorld'
 
 export default {
   name: 'App',
   components: {
-    my_component
+    HelloWorld
   }
 }
 </script>

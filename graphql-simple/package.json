@@ -1,7 +1,7 @@
 {
-  "name": "graphql-simple",
+  "name": "simple",
   "version": "1.0.0",
-  "description": "AppSync dumb",
+  "description": "A Vue.js project",
   "author": "Kreodont",
   "private": true,
   "scripts": {
