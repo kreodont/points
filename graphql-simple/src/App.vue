@@ -1,9 +1,10 @@
 <template>
   <!-- demo root element -->
   <div id="app">
-    <My title="Some" fsize=0.8></My>
+    <!--<My title="Some" fsize=0.8></My>-->
     <My title="Another"></My>
-    <My></My>
+    <!--<My></My>-->
+    <!--<grid></grid>-->
   </div>
 
 </template>
@@ -12,6 +13,7 @@
 //import grid from './components/Grid.vue'
 
 import My from './components/My.vue'
+
 
 
 export default {

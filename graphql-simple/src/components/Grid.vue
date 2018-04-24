@@ -1,8 +1,9 @@
 <template>
   <!-- component template -->
 <script type="text/x-template" id="grid-template">
+  <p>Hello</p>
   <table>
-    <thead>
+    <thead v-if="columns.length">
       <tr>
         <th v-for="key in columns"
           @click="sortBy(key)"
@@ -13,7 +14,7 @@
         </th>
       </tr>
     </thead>
-    <tbody>
+    <tbody v-if="entry.length">
       <tr v-for="entry in filteredData">
         <td v-for="key in columns">
           {{entry[key]}}
@@ -38,7 +39,7 @@
 
 <script>
   // register the grid component
-  Vue.component('demo-grid', {
+  export default {
     template: '#grid-template',
     props: {
       data: Array,
@@ -47,7 +48,8 @@
     },
     data: function () {
       let sortOrders = {};
-      if (len(this.columns) > 0) {
+      console.log(this.columns);
+      if (this.columns !== undefined) {
         this.columns.forEach(function (key) {
           sortOrders[key] = 1
         });
@@ -82,7 +84,10 @@
     },
     filters: {
       capitalize: function (str) {
-        return str.charAt(0).toUpperCase() + str.slice(1)
+        if (str !== undefined) {
+          return str.charAt(0).toUpperCase() + str.slice(1)
+        }
+        return ""
       }
     },
     methods: {
@@ -91,7 +96,7 @@
         this.sortOrders[key] = this.sortOrders[key] * -1
       }
     }
-  });
+  }
 
 //  // bootstrap the demo
 //  let demo = new Vue({
