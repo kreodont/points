@@ -1,27 +1,34 @@
 <template>
   <!-- demo root element -->
-  <div id="app">
-    <!--<My title="Some" fsize=0.8></My>-->
-    <My title="Another"></My>
-    <!--<My></My>-->
-    <!--<grid></grid>-->
+  <div id="demo">
+    <My :title="title" :data="gridData" :columns="gridColumns"></My>
   </div>
 
 </template>
 
 <script>
-//import grid from './components/Grid.vue'
+  import My from './components/My.vue'
 
-import My from './components/My.vue'
+  export default {
+    name: 'App',
+    components: {
+      My
+    },
+    data: function () {
+      return {
+        title: 'From component',
+        searchQuery: '',
+        gridColumns: ['Имя', 'Время', 'Описание', 'Баллы'],
+        gridData: []
+        // { "Имя": 'Chuck Norris', 'Описание': 'Карл у Клары украл кораллы. Кораллы, Карл!' },]
 
-
-
-export default {
-  name: 'App',
-  components: {
-    My
+      }
+    },
+    created() {
+      this.$http.post('https://o4qvvrybeney3a2ilgryjkgd2q.appsync-api.us-east-1.amazonaws.com/graphql', ).then(response => {}, error => {console.log(error)})
+    }
   }
-}
+
 </script>
 
 <style scoped>

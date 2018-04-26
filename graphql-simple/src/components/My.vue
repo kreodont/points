@@ -1,9 +1,18 @@
 <template>
   <div id="test" :style="{ fontSize: fsize + 'em' }">
-    <b>{{title}}</b>
-    <table>
+    <p><b>{{title}}</b></p>
+    <table v-if="columns">
+      <thead>
+      <tr>
+        <th v-for="key in columns"> {{key | capitalize}}</th>
+      </tr>
+      </thead>
       <tbody>
-        <tr v-for="string in strings">{{string}}</tr>
+      <tr v-for="entry in data">
+        <td v-for="key in columns">
+          {{entry[key]}}
+        </td>
+      </tr>
       </tbody>
     </table>
   </div>
@@ -15,13 +24,21 @@
 //    props: {
 //      strings: Array,
 //    },
-    props: {'title': String, 'fsize': String},
+    props: {'title': String, 'fsize': String, 'data': Array, 'columns': Array},
     template: "#test",
     data() {
       return {
-        strings: ["One", "Two"],
       }
       },
+
+    filters: {
+      capitalize: function (str) {
+        if (str !== undefined) {
+          return str.charAt(0).toUpperCase() + str.slice(1)
+        }
+        return ""
+      }
+    },
 //    created: function () {
 //      this.strings = ['1', '2', '3']
 //    }
@@ -33,6 +50,15 @@
     font-family: Helvetica Neue, Arial, sans-serif;
     font-size: 14px;
     color: #444;
+  }
+  p {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 20px;
+    font-size: 24px;
   }
 
   table {

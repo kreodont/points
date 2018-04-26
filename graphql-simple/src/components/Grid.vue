@@ -48,7 +48,6 @@
     },
     data: function () {
       let sortOrders = {};
-      console.log(this.columns);
       if (this.columns !== undefined) {
         this.columns.forEach(function (key) {
           sortOrders[key] = 1
