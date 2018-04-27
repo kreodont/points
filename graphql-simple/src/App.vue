@@ -1,7 +1,10 @@
 <template>
   <!-- demo root element -->
   <div id="demo">
-    <My :title="title" :data="gridData" :columns="gridColumns"></My>
+    <form id="search">
+      Поиск <input name="query" v-model="searchQuery">
+    </form>
+    <My :title="title" :data="gridData" :columns="gridColumns" :filterKey="searchQuery"></My>
   </div>
 
 </template>
@@ -26,7 +29,7 @@
     },
     created() {
       let config = {headers: {'Content-Type': 'application/graphql', 'x-api-key': 'da2-5nclayjndvdtfn7aatnadqmvrq'}};
-      let data = {query: "{allPoint{points{points_owner{printable_name, current_points}, details, number}}}"};
+      let data = {query: "{allPoint{points{points_owner{printable_name, current_points}, details, number, creation_readable_date_time_moscow}}}"};
       axios.post('https://o4qvvrybeney3a2ilgryjkgd2q.appsync-api.us-east-1.amazonaws.com/graphql', data, config)
         .then(
           response => {
@@ -35,7 +38,7 @@
               if (points.hasOwnProperty(index)) {
                 this.gridData.push({
                   'Имя': points[index]['points_owner']['printable_name'],
-                  'Время': '0',
+                  'Время': points[index]['creation_readable_date_time_moscow'],
                   'Описание': points[index]['details'],
                   'Баллы': points[index]['number']});
               }

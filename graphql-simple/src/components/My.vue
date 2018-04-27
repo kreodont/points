@@ -8,7 +8,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="entry in data">
+      <tr v-for="entry in filteredData">
         <td v-for="key in columns">
           {{entry[key]}}
         </td>
@@ -24,7 +24,7 @@
 //    props: {
 //      strings: Array,
 //    },
-    props: {'title': String, 'fsize': String, 'data': Array, 'columns': Array},
+    props: {'title': String, 'fsize': String, 'data': Array, 'columns': Array, 'filterKey': String},
     template: "#test",
     data() {
       return {}
@@ -36,6 +36,20 @@
           return str.charAt(0).toUpperCase() + str.slice(1)
         }
         return ""
+      }
+    },
+    computed: {
+      filteredData: function () {
+        let filterKey = this.filterKey && this.filterKey.toLowerCase();
+        let data = this.data;
+        if (filterKey) {
+          data = data.filter(function (row) {
+            return Object.keys(row).some(function (key) {
+              return String(row[key]).toLowerCase().indexOf(filterKey) > -1
+            })
+          })
+        }
+        return data
       }
     },
 //    created: function () {
