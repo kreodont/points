@@ -1,9 +1,7 @@
 <template>
   <!-- demo root element -->
   <div id="demo">
-    <form id="search">
       Поиск <input name="query" v-model="searchQuery">
-    </form>
     <My :title="title" :data="gridData" :columns="gridColumns" :filterKey="searchQuery"></My>
   </div>
 
