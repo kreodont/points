@@ -8,6 +8,7 @@
 
 <script>
   import My from './components/My.vue'
+  import axios from 'axios'
 
   export default {
     name: 'App',
@@ -16,23 +17,38 @@
     },
     data: function () {
       return {
-        title: 'From component',
+        title: 'Какой-то заголовок',
         searchQuery: '',
         gridColumns: ['Имя', 'Время', 'Описание', 'Баллы'],
         gridData: []
-        // { "Имя": 'Chuck Norris', 'Описание': 'Карл у Клары украл кораллы. Кораллы, Карл!' },]
 
       }
     },
     created() {
-      this.$http.post('https://o4qvvrybeney3a2ilgryjkgd2q.appsync-api.us-east-1.amazonaws.com/graphql', ).then(response => {}, error => {console.log(error)})
+      let config = {headers: {'Content-Type': 'application/graphql', 'x-api-key': 'da2-5nclayjndvdtfn7aatnadqmvrq'}};
+      let data = {query: "{allPoint{points{points_owner{printable_name, current_points}, details, number}}}"};
+      axios.post('https://o4qvvrybeney3a2ilgryjkgd2q.appsync-api.us-east-1.amazonaws.com/graphql', data, config)
+        .then(
+          response => {
+            let points = response['data']['data']['allPoint']['points'];
+            for (let index in points) {
+              if (points.hasOwnProperty(index)) {
+                this.gridData.push({
+                  'Имя': points[index]['points_owner']['printable_name'],
+                  'Время': '0',
+                  'Описание': points[index]['details'],
+                  'Баллы': points[index]['number']});
+              }
+            }
+              },
+          error => {console.log(error)})
     }
   }
 
 </script>
 
 <style scoped>
-#app {
+#demo {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
