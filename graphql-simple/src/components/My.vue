@@ -1,6 +1,6 @@
 <template>
-  <div id="test" :style="{ fontSize: fsize + 'em' }">
-    <p><b>{{title}}</b></p>
+  <div id="test">
+    <input name="query" v-model="filterKey" v-if="data" placeholder="Поиск" class="search_box">
     <table v-if="columns">
       <thead>
       <tr>
@@ -24,7 +24,7 @@
 //    props: {
 //      strings: Array,
 //    },
-    props: {'title': String, 'fsize': String, 'data': Array, 'columns': Array, 'filterKey': String},
+    props: {'data': Array, 'columns': Array, 'filterKey': String},
     template: "#test",
     data() {
       return {}
@@ -97,6 +97,17 @@
   th, td {
     min-width: 120px;
     padding: 10px 20px;
+  }
+
+  .search_box {
+    /* Position the search icon */
+    /* Do not repeat the icon image */
+    /*min-width: 550px;*/
+    width: 37.5%;
+    font-size: 16px; /* Increase font-size */
+    padding: 10px 20px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
   }
 
   /*th.active {*/

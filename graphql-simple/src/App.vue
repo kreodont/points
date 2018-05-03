@@ -1,8 +1,8 @@
 <template>
   <!-- demo root element -->
   <div id="demo">
-      Поиск <input name="query" v-model="searchQuery">
-    <My :title="title" :data="gridData" :columns="gridColumns" :filterKey="searchQuery"></My>
+      <!--Поиск <input name="query" v-model="searchQuery">-->
+    <My :title="title" :data="gridData" :columns="gridColumns"></My>
   </div>
 
 </template>
@@ -18,8 +18,6 @@
     },
     data: function () {
       return {
-        title: 'Какой-то заголовок',
-        searchQuery: '',
         gridColumns: ['Имя', 'Время', 'Описание', 'Баллы'],
         gridData: []
 
@@ -53,8 +51,8 @@
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /*text-align: center;*/
   color: #2c3e50;
-  margin-top: 60px;
+  /*margin-top: 60px;*/
 }
 </style>
