@@ -24,7 +24,7 @@
       }
     },
     created() {
-      let config = {headers: {'Content-Type': 'application/graphql', 'x-api-key': 'da2-5nclayjndvdtfn7aatnadqmvrq'}};
+      let config = {headers: {'Content-Type': 'application/graphql', 'x-api-key': 'da2-mb5oh5jfp5gcncvvcx5du5634m'}};
       let data = {query: "{allPoint{points{points_owner{printable_name, current_points}, details, number, creation_readable_date_time_moscow}}}"};
       axios.post('https://o4qvvrybeney3a2ilgryjkgd2q.appsync-api.us-east-1.amazonaws.com/graphql', data, config)
         .then(
